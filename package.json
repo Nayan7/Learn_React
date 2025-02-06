@@ -1,0 +1,32 @@
+{
+  "name": "react-practice",
+  "version": "1.0.0",
+  "description": "Learning how react works",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nayan7/Learn_React.git"
+  },
+  "author": "Nayan Joshi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nayan7/Learn_React/issues"
+  },
+  "homepage": "https://github.com/Nayan7/Learn_React#readme",
+  "devDependencies": {
+    "parcel": "^2.13.3",
+    "process": "^0.11.10"
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "6.4"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
