@@ -7,6 +7,13 @@ import Contact from './components/Contact';
 import Error from './components/Error';
 import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import RestaurantMenu from './components/RestaurantMenu';
+import {useState, useEffect} from 'react';
+import UserContext from './utils/UserContext';
+import { Provider } from 'react-redux';
+import appStore from './utils/appStore';
+import Cart from './components/Cart';
+import Login from './components/Login';
+import Register from './components/Register';
 
 /*
 Header
@@ -27,11 +34,25 @@ Footer
 
 
 const AppLayout = () => {
+
+    const [userName, setuserName] = useState();
+
+    useEffect(() => {
+        const data = {
+            name: "Nayan Joshi",
+        };
+        setuserName(data.name);
+    }, []);
+
     return(
+        <Provider store={appStore}>
+        <UserContext.Provider value={{loggedInUser:userName, setuserName}}>
         <div className='app'>
             <Header /> {/* This will always be shown */}
             <Outlet /> {/* This is where child routes will be rendered */}
         </div>
+        </UserContext.Provider>
+        </Provider>
     );
     
 };
@@ -55,6 +76,18 @@ const appRouter = createBrowserRouter([
             {
                 path: "/restaurants/:resId",
                 element: <RestaurantMenu />,
+            },
+            {
+                path: "/cart",
+                element: <Cart />,
+            },
+            {
+                path: "/login",
+                element: <Login />,
+            },
+            {
+                path: "/register",
+                element: <Register />,
             },
         ],
         errorElement: <Error />, // Display error page for undefined routes
